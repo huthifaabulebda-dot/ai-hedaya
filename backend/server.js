@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Environment variables
 const GROK_API_KEY = process.env.GROK_API_KEY;
-const GROK_MODEL = process.env.GROK_MODEL || 'mixtral-8x7b-32768';
+const GROK_MODEL = process.env.GROK_MODEL || 'llama-3.3-70b-versatile';
 const GROK_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 if (!GROK_API_KEY) {
