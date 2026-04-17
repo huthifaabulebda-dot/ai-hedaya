@@ -1,0 +1,17 @@
+{
+  "name": "hedaya-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Hedaya Islamic Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -c-1",
+    "dev": "npx http-server -p 3000 -c-1 --cors",
+    "serve": "npx http-server -p 3000 -c-1"
+  },
+  "keywords": ["islamic", "frontend", "web"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

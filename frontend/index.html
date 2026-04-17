@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة هداية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="logo_no_bg.png">
+</head>
+<body>
+  <!-- شريط التنقل العلوي: شعار + روابط + أزرار التحكم -->
+  <div class="nav-wrap">
+    <nav class="container navbar">
+      <!-- هوية المنصة -->
+      <div class="brand">
+        <img class="brand-icon" src="logo_no_bg.png" alt="شعار منصة الخدمات الإسلامية">
+        <span>منصة هداية</span>
+      </div>
+      <!-- زر القائمة في الجوال -->
+      <button id="navToggle" class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNavLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <button class="icon-btn icon-nav-btn" type="button" aria-label="اسأل الذكاء الاصطناعي" title="اسأل الذكاء الاصطناعي" onclick="window.location.href='ask-ai.html'">
+        🤖
+      </button>
+      <!-- روابط التنقل بين أقسام الصفحة -->
+      <div class="nav-links" id="mainNavLinks">
+        <a href="#home">الرئيسية</a>
+        <a href="#quran">القرآن</a>
+        <a href="#hadith">الحديث</a>
+        <a href="#zakat">الزكاة</a>
+        <a href="#fatwa">الفتاوى</a>
+        <a href="#contact">الاستفسارات</a>
+        <a href="#reminders">التذكير اليومي</a>
+        <a href="ask-ai.html">Ask AI</a>
+        <a href="#prayer">مواقيت الصلاة</a>
+        <a href="#nearby-mosques">أقرب المساجد</a>
+        <a href="#islam-world">إسلام حول العالم</a>
+        <a href="#tasbeeh">المسبحة</a>
+      </div>
+      <!-- زر الثيم (نسخة الشاشات الكبيرة) -->
+      <button id="darkModeToggle" class="toggle-btn icon-toggle js-theme-toggle theme-toggle-desktop" type="button" aria-label="تبديل الوضع" aria-pressed="false" title="تبديل الوضع">
+        <span class="toggle-text" aria-hidden="true">الوضع الليلي</span>
+        <span class="icon icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M21 14.2A8.2 8.2 0 0 1 9.8 3a7.4 7.4 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="icon icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+    </nav>
+  </div>
+
+  <div id="fridayBanner" class="friday-banner" style="display:none;">
+    🌙 جمعة مباركة – لا تنسَ قراءة سورة الكهف والإكثار من الصلاة على النبي ﷺ
+  </div>
+
+  <!-- قسم البداية -->
+  <header id="home" class="hero container">
+    <div class="hero-card">
+      <!-- زر الثيم (نسخة الجوال فوق العنوان) -->
+      <button class="toggle-btn icon-toggle js-theme-toggle theme-toggle-mobile" type="button" aria-label="تبديل الوضع" aria-pressed="false" title="تبديل الوضع">
+        <span class="toggle-text" aria-hidden="true">الوضع الليلي</span>
+        <span class="icon icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M21 14.2A8.2 8.2 0 0 1 9.8 3a7.4 7.4 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="icon icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <h1>ارشاد و خدمات  ليومك</h1>
+      <p>مرحبًا بك في منصة إسلامية تجمع الأدوات التعبدية والذكر النافع في مكان واحد.</p>
+      <div class="quote">
+        "ألا بذكر الله تطمئن القلوب" (الرعد: 28)
+      </div>
+      <div id="hijriDateBox" class="result" style="margin-top:0.9rem;">
+        التاريخ الهجري: جارٍ التحميل...
+      </div>
+      <button class="btn" type="button" onclick="document.querySelector('#quran').scrollIntoView()">استكشف الخدمات</button>
+    </div>
+  </header>
+
+  <!-- محتوى الصفحة الرئيسي -->
+  <main class="container">
+    <section id="friday-mode" style="display:none;">
+      <div class="section-head">
+        <h2>وضع يوم الجمعة</h2>
+        <p>محتوى روحاني هادئ يساعدك على اغتنام هذا اليوم المبارك.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card friday-card">
+          <h3 class="icon-title">📖 سورة الكهف</h3>
+          <p>يمكنك قراءة أو الاستماع إلى سورة الكهف.</p>
+          <a class="btn alt" href="https://quran.com/18" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:inline-block;">قراءة سورة الكهف</a>
+          <a class="btn alt" href="https://www.youtube.com/results?search_query=سورة+الكهف+كاملة" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:inline-block; margin-top:0.5rem;">استماع سورة الكهف</a>
+        </article>
+
+        <article class="card friday-card">
+          <h3 class="icon-title">🕋 عداد الصلاة على النبي ﷺ</h3>
+          <button id="salawatBtn" class="btn" type="button">اللهم صلِّ على محمد</button>
+          <div id="salawatCount" class="result">0</div>
+        </article>
+
+        <article class="card friday-card">
+          <h3 class="icon-title">📝 تذكيرات يوم الجمعة</h3>
+          <ul class="list" style="max-height:none;">
+            <li><button type="button" disabled>قراءة سورة الكهف</button></li>
+            <li><button type="button" disabled>الإكثار من الذكر</button></li>
+            <li><button type="button" disabled>الدعاء في ساعة الاستجابة قبل المغرب</button></li>
+          </ul>
+        </article>
+
+        <article class="card friday-card">
+          <h3 class="icon-title">🤲 قسم الأدعية</h3>
+          <div id="fridayDuaText" class="result">اللهم اجعل هذا اليوم نورًا وهدى ورحمة.</div>
+          <button id="nextDuaBtn" class="btn alt" type="button">دعاء آخر</button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- قسم القرآن (بحث السور + الاستماع) -->
+    <section id="quran">
+      <div class="section-head">
+        <h2>القرآن الكريم (استماع)</h2>
+        <p>ابحث عن السور واستمع إليها مع اختيار القارئ المناسب.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3 class="icon-title">📖 البحث عن سورة</h3>
+          <input id="surahSearch" class="input" type="text" placeholder="ابحث باسم السورة أو رقمها...">
+          <ul id="surahList" class="list"></ul>
+        </article>
+        <article class="card">
+          <h3 class="icon-title">🎧 مشغل التلاوة</h3>
+          <label for="reciterSelect">اختر القارئ</label>
+          <input id="reciterSearch" class="input" type="text" placeholder="ابحث عن قارئ...">
+          <select id="reciterSelect" class="select">
+            <option value="ar.alafasy">مشاري العفاسي</option>
+            <option value="ar.abdurrahmaansudais">عبدالرحمن السديس</option>
+            <option value="ar.saoodshuraym">سعود الشريم</option>
+          </select>
+          <audio id="quranAudio" controls style="width:100%; margin-top:0.8rem;"></audio>
+          <button id="khatmaToggleBtn" class="btn alt khatma-toggle-btn" type="button" aria-pressed="false" style="margin-top:0.8rem;">
+            <span class="wifi-icon" aria-hidden="true">📶</span>
+            <span id="khatmaToggleText">تفعيل متابعة الختمة</span>
+          </button>
+          <button id="khatmaResetBtn" class="btn alt" type="button" style="margin-top:0.5rem;">إعادة تعيين الختمة</button>
+          <div id="khatmaStatus" class="result">المتابعة غير مفعلة حاليًا.</div>
+          <ul id="khatmaTrackerList" class="list khatma-tracker-list" style="display:none;"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- قسم الأحاديث الصحيحة -->
+    <section id="hadith">
+      <div class="section-head">
+        <h2>مجموعة الأحاديث</h2>
+        <p>استعرض الأحاديث المصنفة مع البحث والتصفية بسرعة.</p>
+      </div>
+      <article class="card">
+        <input id="hadithSearch" class="input" type="text" placeholder="ابحث في نص الحديث...">
+        
+        <div id="hadithResults" class="grid-2"></div>
+        <a
+          id="hadithLibraryLink"
+          class="btn alt"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://sunnah.com/"
+          style="width:100%; margin-top:0.9rem; display:none; text-align:center; text-decoration:none;"
+        >
+          اطلع على مزيد من الأحاديث الصحيحة  
+        </a>
+      </article>
+    </section>
+
+    <!-- قسم حاسبة الزكاة -->
+    <section id="zakat">
+      <div class="section-head">
+        <h2>حاسبة الزكاة</h2>
+        <p>أدخل أصولك وسيتم حساب الزكاة بنسبة 2.5% مباشرة.</p>
+      </div>
+      <article class="card">
+        <div class="grid-2">
+          <div>
+            <label for="money">النقد</label>
+            <input id="money" class="input" type="number" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <div>
+            <label for="gold">قيمة الذهب</label>
+            <input id="gold" class="input" type="number" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <div>
+            <label for="silver">قيمة الفضة</label>
+            <input id="silver" class="input" type="number" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <div>
+            <label for="business">أصول التجارة</label>
+            <input id="business" class="input" type="number" min="0" step="0.01" placeholder="0.00">
+          </div>
+        </div>
+        <button id="zakatBtn" class="btn" type="button">احسب الزكاة</button>
+        <div id="zakatResult" class="result"></div>
+      </article>
+    </section>
+
+    <!-- قسم الفتاوى (بحث خارجي) -->
+    <section id="fatwa">
+      <div class="section-head">
+        <h2>الفتاوى والاستفسارات</h2>
+        <p>اكتب سؤالك وسيتم تجهيز بحث له مباشرة.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <label for="fatwaQuestion">سؤالك</label>
+          <textarea id="fatwaQuestion" rows="5" placeholder="اكتب سؤالك الشرعي هنا..."></textarea>
+          <button id="fatwaBtn" class="btn" type="button">ابحث في Google</button>
+        </article>
+        <article class="card">
+          <h3 class="icon-title">📝 النتيجة</h3>
+          <div id="fatwaAnswer" class="result"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- نموذج إرسال الاستفسارات عبر البريد -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>إرسال استفسار عبر البريد الإلكتروني</h2>
+        <p>املأ البيانات التالية وسيتم إرسال الاستفسار مباشرة.</p>
+      </div>
+      <article class="card">
+        <form id="contactForm">
+          <label for="contactName">الاسم</label>
+          <input id="contactName" name="name" class="input" type="text" placeholder="اكتب اسمك" required>
+
+          <label for="contactEmail">البريد الإلكتروني</label>
+          <input id="contactEmail" name="email" class="input" type="email" placeholder="example@email.com" required>
+
+          <label for="contactComplaint">الشكوى / الاستفسار</label>
+          <textarea id="contactComplaint" name="message" rows="5" placeholder="اكتب الشكوى أو الاستفسار هنا..." required></textarea>
+
+          <button id="contactSubmitBtn" class="btn" type="submit" style="margin-top:0.8rem;">إرسال الاستفسار</button>
+        </form>
+        <div id="contactStatus" class="result"></div>
+      </article>
+    </section>
+
+    <!-- التذكير اليومي -->
+    <section id="reminders">
+      <div class="section-head">
+        <h2>التذكير اليومي</h2>
+        <p>ولّد تذكيرًا إيمانيًا جديدًا مع إمكانية تفعيل الإشعارات.</p>
+      </div>
+      <article class="card">
+        <div id="reminderText" class="result">اضغط الزر للحصول على تذكير إيماني ودعاء.</div>
+        <div style="display:flex; gap:0.7rem; flex-wrap:wrap; margin-top:0.8rem;">
+          <button id="reminderBtn" class="btn" type="button">تذكير جديد</button>
+          <button id="notifyBtn" class="btn alt" type="button">تفعيل الإشعارات</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- مواقيت الصلاة عبر رابط بحث حسب المدينة -->
+    <section id="prayer">
+      <div class="section-head">
+        <h2>مواقيت الصلاة</h2>
+        <p>اكتب اسم منطقتك للحصول على  مواقيت الصلاة.</p>
+      </div>
+      <article class="card">
+        <label for="regionInput">اسم المنطقة / المدينة</label>
+        <input id="regionInput" class="input" type="text" placeholder="مثال: عمّان أو الرياض أو جدة">
+        <button id="prayerBtn" class="btn" type="button">ابحث عن مواقيت الصلاة</button>
+        <div id="prayerStatus" class="result"></div>
+      </article>
+    </section>
+
+    <!-- أقرب المساجد حسب عنوان المستخدم -->
+    <section id="nearby-mosques">
+      <div class="section-head">
+        <h2>أقرب المساجد</h2>
+        <p>اكتب عنوانك أو موقعك وسيتم تجهيز رابط يفتح الخرائط على أقرب مسجد.</p>
+      </div>
+      <article class="card">
+        <label for="mosqueAddressInput">اكتب عنوانك</label>
+        <input id="mosqueAddressInput" class="input" type="text" placeholder="مثال: جدة حي الروضة">
+        <div style="display:flex; gap:0.7rem; flex-wrap:wrap; margin-top:0.8rem;">
+          <button id="mosqueSearchBtn" class="btn" type="button">بحث</button>
+          <button id="mosqueCurrentLocationBtn" class="btn alt" type="button">استخدم موقعي الحالي</button>
+        </div>
+        <div id="mosqueSearchStatus" class="result"></div>
+      </article>
+    </section>
+
+    <!-- إسلام حول العالم -->
+    <section id="islam-world">
+      <div class="section-head">
+        <h2>إسلام حول العالم 🌍</h2>
+        <p>معلومات مختصرة عن عدد المسلمين وبعض المساجد المشهورة في دول مختلفة.</p>
+      </div>
+      <input id="islamWorldSearchInput" class="input" type="text" placeholder="ابحث باسم الدولة...">
+      <div id="islamWorldCards" class="grid-2"></div>
+      <button id="islamWorldToggleBtn" class="btn alt" type="button">عرض المزيد</button>
+    </section>
+
+    <!-- المسبحة الرقمية -->
+    <section id="tasbeeh">
+      <div class="section-head">
+        <h2>عداد التسبيح</h2>
+        <p>عداد ذكر رقمي بسيط مع زر إعادة الضبط.</p>
+      </div>
+      <article class="card">
+        <button id="tasbeehCircle" class="tasbeeh-circle" type="button" aria-label="اضغط للتسبيح">
+          <div class="tasbeeh-label">اضغط للتسبيح</div>
+          <div class="tasbeeh-count" id="tasbeehCount">0</div>
+        </button>
+        <div style="display:flex; gap:0.7rem; flex-wrap:wrap; justify-content:center; margin-top:0.8rem;">
+          <button id="resetTasbeeh" class="btn alt" type="button">البدء من جديد</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- بث مباشر من الحرم المكي -->
+  <section id="makkah-live" class="container">
+    <article class="card live-card">
+      <div class="section-head">
+        <h2>بث مباشر من الحرم المكي</h2>
+        <p>مشاهدة مباشرة من المسجد الحرام .</p>
+      </div>
+      <div class="live-frame-wrap">
+        <iframe
+          title="بث مباشر الحرم المكي"
+          src="https://www.youtube.com/embed/Cm1v4bteXbI"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="width:100%; height:500px; border:none;"
+        >
+          المتصفح الخاص بك لا يدعم عرض الفيديو. يرجى تحديث المتصفح أو استخدام رابط خارجي.
+        </iframe>
+      </div>
+      <a class="btn alt live-link" href="https://www.youtube.com/user/SaudiQuranTv/live" target="_blank" rel="noopener noreferrer">
+        فتح البث الرسمي مباشرة
+      </a>
+      <a class="btn alt live-link" href="https://www.youtube.com/results?search_query=البث+المباشر+للحرم+المكي" target="_blank" rel="noopener noreferrer">
+        إذا لم يظهر الفيديو اضغط هنا
+      </a>
+    </article>
+  </section>
+
+  <!-- تذييل الصفحة -->
+  <footer>
+    <p>نسأل الله أن يجعل هذه المنصة نفعًا وبركة لامة الاسلام. | منصة الخدمات الإسلامية © 2026</p>
+  </footer>
+
+  <!-- زر عائم للرجوع إلى أعلى الصفحة -->
+  <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="العودة إلى أعلى الصفحة" title="العودة للأعلى">
+    ↑
+  </button>
+  <script src="app.js"></script>
+</body>
+</html>

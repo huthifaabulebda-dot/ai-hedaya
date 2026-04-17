@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask AI | منصة هداية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="logo_no_bg.png">
+</head>
+<body class="ask-ai-page">
+  <div class="nav-wrap">
+    <nav class="container navbar">
+      <div class="brand">
+        <img class="brand-icon" src="logo_no_bg.png" alt="شعار منصة هداية">
+        <span>منصة هداية</span>
+      </div>
+      <button id="navToggle" class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNavLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <button class="icon-btn icon-nav-btn home-btn" type="button" aria-label="الرئيسية" title="الرئيسية" onclick="window.location.href='index.html'">
+        🏠
+      </button>
+      <div class="nav-links" id="mainNavLinks">
+        <a href="index.html">الرئيسية</a>
+        <a href="ask-ai.html" class="active">Ask AI</a>
+        <a href="#ask-section">اسأل الآن</a>
+      </div>
+      <button id="darkModeToggle" class="toggle-btn icon-toggle js-theme-toggle theme-toggle-desktop" type="button" aria-label="تبديل الوضع" aria-pressed="false" title="تبديل الوضع">
+        <span class="toggle-text" aria-hidden="true">الوضع الليلي</span>
+        <span class="icon icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M21 14.2A8.2 8.2 0 0 1 9.8 3a7.4 7.4 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="icon icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+    </nav>
+  </div>
+
+  <header id="home" class="hero container">
+    <div class="hero-card">
+      <button class="toggle-btn icon-toggle js-theme-toggle theme-toggle-mobile" type="button" aria-label="تبديل الوضع" aria-pressed="false" title="تبديل الوضع">
+        <span class="toggle-text" aria-hidden="true">الوضع الليلي</span>
+        <span class="icon icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M21 14.2A8.2 8.2 0 0 1 9.8 3a7.4 7.4 0 1 0 11.2 11.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="icon icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <h1>اسأل الذكاء الاصطناعي</h1>
+      
+      
+      <article id="ask-section" class="card">
+        <div class="section-head">
+          <h2>⚡ اسأل AI 🤖</h2>
+          
+        </div>
+        
+        <div class="ask-form">
+          <label for="aiQuestion">📝 السؤال</label>
+          <textarea id="aiQuestion" class="input" rows="5" placeholder="مثال: ما احسن الادعية الصحيحة من سنة النبي؟"></textarea>
+          
+          <div class="btn-group">
+            <button id="askAiBtn" class="btn btn-primary" type="button">
+              <span class="btn-icon">💡</span>
+              <span class="btn-text">اسأل الآن</span>
+            </button>
+            <button id="clearBtn" class="btn btn-secondary" type="button">
+              <span class="btn-icon">🔄</span>
+              <span class="btn-text">مسح</span>
+            </button>
+          </div>
+        </div>
+        
+        <div id="aiResponse" class="result" style="margin-top:1rem; text-align:right;">
+          <div id="loadingSpinner" style="display:none; text-align:center;">
+            <span class="spinner">⏳</span>
+            <p>جاري معالجة سؤالك...</p>
+          </div>
+          <div id="responseContent"></div>
+        </div>
+      </article>
+    </div>
+  </header>
+
+  <script src="ask-ai.js"></script>
+</body>
+</html>
