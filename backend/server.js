@@ -1,10 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const frontendPath = path.join(__dirname, '../frontend');
+app.use(express.static(frontendPath));
 
 // Middleware
 app.use(cors());
@@ -150,6 +154,14 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
     service: 'Hedaya Backend'
   });
+});
+
+// Fallback for frontend routes
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    return next();
+  }
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 // Start server
