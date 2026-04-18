@@ -72,28 +72,30 @@
           
         </div>
         
-        <div class="ask-form">
-          <label for="aiQuestion">📝 السؤال</label>
-          <textarea id="aiQuestion" class="input" rows="5" placeholder="مثال: ما احسن الادعية الصحيحة من سنة النبي؟"></textarea>
+        <div class="chat-container" style="display: flex; flex-direction: column; height: 600px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9; overflow: hidden;">
           
-          <div class="btn-group">
-            <button id="askAiBtn" class="btn btn-primary" type="button">
-              <span class="btn-icon">💡</span>
-              <span class="btn-text">اسأل الآن</span>
-            </button>
-            <button id="clearBtn" class="btn btn-secondary" type="button">
-              <span class="btn-icon">🔄</span>
-              <span class="btn-text">مسح</span>
-            </button>
+          <!-- Chat Messages Area -->
+          <div id="chatMessages" class="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; direction: rtl;">
+            <div class="welcome-message" style="text-align: center; color: #999; padding: 2rem 0;">
+              <p>👋 مرحباً بك في المحادثة مع الذكاء الاصطناعي</p>
+              <p style="font-size: 0.9rem;">ابدأ محادثتك بأي سؤال تريده</p>
+            </div>
           </div>
-        </div>
-        
-        <div id="aiResponse" class="result" style="margin-top:1rem; text-align:right;">
-          <div id="loadingSpinner" style="display:none; text-align:center;">
-            <span class="spinner">⏳</span>
-            <p>جاري معالجة سؤالك...</p>
+
+          <!-- Chat Input Area -->
+          <div class="chat-input-area" style="padding: 1.5rem; border-top: 1px solid #ddd; background: white;">
+            <div style="display: flex; gap: 0.8rem;">
+              <textarea id="messageInput" class="input" rows="2" placeholder="اكتب سؤالك هنا...أو رسالتك" style="flex: 1; resize: vertical;"></textarea>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button id="sendBtn" class="btn btn-primary" type="button" style="flex: 1; min-height: 50px;">
+                  <span class="btn-icon">📤ارسال</span>
+                </button>
+                <button id="newChatBtn" class="btn btn-secondary" type="button" title="محادثة جديدة">
+                  <span class="btn-icon">🔄مسح</span>
+                </button>
+              </div>
+            </div>
           </div>
-          <div id="responseContent"></div>
         </div>
       </article>
     </div>

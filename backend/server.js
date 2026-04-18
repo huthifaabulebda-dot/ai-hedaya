@@ -35,46 +35,49 @@ function parseHFResponse(responseData) {
 // AI Chat endpoint
 app.post('/api/ask-ai', async (req, res) => {
   try {
-    const { question } = req.body;
+    const { message, conversation } = req.body;
 
-    if (!question || typeof question !== 'string' || question.trim().length === 0) {
+    if (!message || typeof message !== 'string' || message.trim().length === 0) {
       return res.status(400).json({
-        error: 'Invalid question provided'
+        error: 'Invalid message provided'
       });
     }
 
-    // Prepare the prompt for Islamic context
-    const systemPrompt = `أنت مساعد ذكاء اصطناعي متخصص في الإسلام والعلوم الشرعية.
-    يجب أن تكون إجاباتك:
-    - دقيقة ومبنية على القرآن الكريم والسنة النبوية الصحيحة
-    - محترمة ومهذبة في التعبير
-    - مفيدة ومباشرة في الإجابة
-    - باللغة العربية الفصحى
-    - إذا كان السؤال خارج نطاق الإسلام، أخبر المستخدم بأنك متخصص في المواضيع الإسلامية فقط
+    // Build conversation messages for context
+    const messages = [
+      {
+        role: 'system',
+        content: `أنت مساعد ذكاء اصطناعي متخصص في الإسلام والعلوم الشرعية.
+            يجب أن تكون إجاباتك:
+            - دقيقة ومبنية على القرآن الكريم والسنة النبوية الصحيحة
+            - محترمة ومهذبة في التعابير
+            - مفيدة ومباشرة في الإجابة
+            - باللغة العربية الفصحى
+            - إذا كان السؤال خارج نطاق الإسلام، أخبر المستخدم بأنك متخصص في المواضيع الإسلامية فقط`
+      }
+    ];
 
-    السؤال: ${question.trim()}`;
+    // Add previous conversation messages (limit to last 10 messages for context)
+    if (conversation && Array.isArray(conversation)) {
+      const recentMessages = conversation.slice(-10).map(msg => ({
+        role: msg.role === 'user' ? 'user' : 'assistant',
+        content: msg.content
+      }));
+      messages.push(...recentMessages);
+    }
+
+    // Add current user message
+    messages.push({
+      role: 'user',
+      content: message.trim()
+    });
 
     // Call Grok Cloud API
     let answer;
     try {
       const response = await axios.post(GROK_API_URL, {
         model: GROK_MODEL,
-        messages: [
-          {
-            role: 'system',
-            content: `أنت مساعد ذكاء اصطناعي متخصص في الإسلام والعلوم الشرعية.
-            يجب أن تكون إجاباتك:
-            - دقيقة ومبنية على القرآن الكريم والسنة النبوية الصحيحة
-            - محترمة ومهذبة في التعبير
-            - مفيدة ومباشرة في الإجابة
-            - باللغة العربية الفصحى
-            - إذا كان السؤال خارج نطاق الإسلام، أخبر المستخدم بأنك متخصص في المواضيع الإسلامية فقط`
-          },
-          {
-            role: 'user',
-            content: question.trim()
-          }
-        ],
+        messages: messages,
         max_tokens: 500,
         temperature: 0.7
       }, {
@@ -117,7 +120,7 @@ app.post('/api/ask-ai', async (req, res) => {
 
     res.json({
       answer: answer.trim(),
-      question: question.trim()
+      message: message.trim()
     });
 
   } catch (error) {
